@@ -1,12 +1,13 @@
+#pragma once
+
 #include <cmath>
 #include <memory>
 #include "ftxui/component/component.hpp"  // for Renderer, CatchEvent, Horizontal, Menu, Tab
 #include "ftxui/dom/canvas.hpp"                    // for Canvas
 
-namespace auto_clock {
+#include "utils.hpp"
 
-#define PI 3.14159265
-
+namespace basic_clock {
 struct instance {
 
     //State
@@ -44,4 +45,4 @@ auto state = ins.state();
 return std::make_pair<ftxui::Component, instance::state_ptr>(ftxui::Renderer(std::move(ins)), std::move(state));
 }
 
-} //namespace auto_clock
+} //namespace basic_clock
