@@ -29,8 +29,8 @@ int main(void) {
 
     // Circle, not filled
     int center_x = 50, center_y = 40, radius = 40;
-    c.DrawPointCircle(center_x, center_y, radius);
-    c.DrawPointLine(center_x, center_y, center_x + radius*cos(radian), center_y - radius*sin(radian));
+    c.DrawBlockCircle(center_x, center_y, radius);
+    c.DrawBlockLine(center_x, center_y, center_x + radius*cos(radian), center_y - radius*sin(radian));
 
     return canvas(std::move(c)) | border;
   });
@@ -44,6 +44,7 @@ int main(void) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     //update state
     radian -= PI/30.0;
+    screen.PostEvent(Event::Custom);
   }
   return EXIT_SUCCESS;
 }
