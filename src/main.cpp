@@ -3,6 +3,10 @@
 #include "basic_clock.hpp"
 #include "interactive_clock.hpp"
 
+#include "counter.hpp"
+#include <lager/event_loop/manual.hpp>
+#include <lager/store.hpp>
+
 void run_auto_clock() {
   //interactive screen and a custom loop
   auto screen = ftxui::ScreenInteractive::FitComponent();
@@ -24,8 +28,39 @@ void run_interactive_clock() {
   screen.Loop(interactive_clock::get());
 }
 
+void run_counter() {
+auto draw = [](counter::model curr)
+  {
+      std::cout << "current value: " << curr.value << '\n';
+  };
+
+auto intent = [](char event)->std::optional<counter::action> 
+{
+    switch (event) {
+    case '+':
+        return counter::increment_action{};
+    case '-':
+        return counter::decrement_action{};
+    case '.':
+        return counter::reset_action{};
+    default:
+        return std::nullopt;
+    }
+};
+
+  auto store = lager::make_store<counter::action>(
+        counter::model{}, lager::with_manual_event_loop{});
+    watch(store, draw);
+
+    auto event = char{};
+    while (std::cin >> event) {
+        if (auto act = intent(event))
+            store.dispatch(*act);
+    }
+}
 int main(void) {
-  run_auto_clock();
+  // run_auto_clock();
   // run_interactive_clock();
+  run_counter();
   return EXIT_SUCCESS;
 }

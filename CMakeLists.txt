@@ -23,13 +23,17 @@ project(ftxui-starter
   VERSION 1.0.0
 )
 
+# Instead of listing each component individually, headers component is catch all. Includes all the header-only components of boost.
+find_package(Boost REQUIRED COMPONENTS headers)
+
 add_executable(ftxui-starter src/main.cpp)
-target_include_directories(ftxui-starter PRIVATE src)
+target_include_directories(ftxui-starter PRIVATE ${Boost_INCLUDE_DIRS} src cereal/include hana/include immer lager zug)
 
 target_link_libraries(ftxui-starter
   PRIVATE ftxui::screen
   PRIVATE ftxui::dom
   PRIVATE ftxui::component # Not needed for this example.
+  ${Boost_LIBRARIES}
 )
 
 if (EMSCRIPTEN) 

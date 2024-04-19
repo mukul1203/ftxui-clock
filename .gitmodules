@@ -1,0 +1,15 @@
+[submodule "cereal"]
+	path = cereal
+	url = https://github.com/USCiLab/cereal.git
+[submodule "hana"]
+	path = hana
+	url = https://github.com/boostorg/hana.git
+[submodule "immer"]
+	path = immer
+	url = https://github.com/arximboldi/immer.git
+[submodule "lager"]
+	path = lager
+	url = https://github.com/arximboldi/lager.git
+[submodule "zug"]
+	path = zug
+	url = https://github.com/arximboldi/zug.git
