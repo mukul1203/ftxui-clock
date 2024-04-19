@@ -33,7 +33,7 @@ inline model update(model c, action action)
 
 } // namespace counter
 
-LAGER_STRUCT(counter, model, value);
-LAGER_STRUCT(counter, increment_action);
-LAGER_STRUCT(counter, decrement_action);
-LAGER_STRUCT(counter, reset_action, new_value);
+// LAGER_STRUCT(counter, model, value);
+// LAGER_STRUCT(counter, increment_action);
+// LAGER_STRUCT(counter, decrement_action);
+// LAGER_STRUCT(counter, reset_action, new_value);
