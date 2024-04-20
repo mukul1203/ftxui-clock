@@ -41,7 +41,7 @@ namespace snake {
         auto [x, y] = head(s);
         snake_utils::point next_head{x+del_x, y+del_y};
         //if direction happens to be just opposite of what it used to be, that is not possible
-        if(s.points.size() > 1 && next_head == *(s.points.begin()++)) {
+        if(s.points.size() > 1 && next_head == *(s.points.begin()+1)) {
             s.dir = opposite(s.dir);
             return s;
         }
